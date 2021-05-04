@@ -2,9 +2,10 @@ import uuid
 import datetime
 from django.utils import timezone
 from django.db import models
+from decouple import config
 from django.core.exceptions import ValidationError
 
-TASK_TEMPLATE_PATH = './'
+TASK_TEMPLATE_PATH = config('TASK_TEMPLATE_PATH')
 
 
 class RegisterTask(models.Model):

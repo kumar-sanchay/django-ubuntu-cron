@@ -1,5 +1,5 @@
 import os
-import shutil
+from decouple import config
 from .models import RegisterJobs, RegisterTask
 
 
@@ -24,8 +24,9 @@ def add_job(registered_name, task_name, year, month, day, hour, min, periodic, *
 
     import datetime
 
-    TASK_HOLDER_PATH = './'
-    CRON_TEMPLATE_BASH_PATH = 'some/radom/path'
+    TASK_HOLDER_PATH = config('TASK_HOLDER_PATH')
+    CRON_TEMPLATE_BASH_PATH = config('CRON_TEMPLATE_BASH_PATH')
+    PROJECT_PATH = config('PROJECT_PATH')
 
     task_temp_obj = RegisterTask.objects.get(name=registered_name)
     job_obj = RegisterJobs(task_name=task_name, scheduled_hour=hour, scheduled_min=min,
