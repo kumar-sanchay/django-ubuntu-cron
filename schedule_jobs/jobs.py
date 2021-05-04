@@ -59,6 +59,6 @@ if __name__ == '__main__':
             """
         
         f1.write(extra_content)
-        os.system(f'(crontab -l; echo "{min} {hour} * * * bash {CRON_TEMPLATE_BASH_PATH} {TASK_HOLDER_PATH}/{job_obj.pk}.py {job_obj.pk}") | crontab -')
+        os.system(f'(crontab -l; echo "{min} {hour} * * * bash {CRON_TEMPLATE_BASH_PATH} {PROJECT_PATH}/{TASK_HOLDER_PATH}/{job_obj.pk}.py {job_obj.pk}") | crontab -')
     
     return job_obj.pk

@@ -7,7 +7,6 @@ from django.core.exceptions import ValidationError
 
 TASK_TEMPLATE_PATH = config('TASK_TEMPLATE_PATH')
 
-
 class RegisterTask(models.Model):
 
     name = models.CharField(max_length=25, unique=True)
