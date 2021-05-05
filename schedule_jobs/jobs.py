@@ -26,7 +26,7 @@ def add_job(registered_name, task_name, year, month, day, hour, min, periodic, *
 
     TASK_HOLDER_PATH = config('TASK_HOLDER_PATH')
     CRON_TEMPLATE_BASH_PATH = config('CRON_TEMPLATE_BASH_PATH')
-    PROJECT_PATH = config('PROJECT_PATH')
+    # PROJECT_PATH = config('PROJECT_PATH')
 
     task_temp_obj = RegisterTask.objects.get(name=registered_name)
     job_obj = RegisterJobs(task_name=task_name, scheduled_hour=hour, scheduled_min=min,
@@ -59,6 +59,6 @@ if __name__ == '__main__':
             """
         
         f1.write(extra_content)
-        os.system(f'(crontab -l; echo "{min} {hour} * * * bash {CRON_TEMPLATE_BASH_PATH} {PROJECT_PATH}/{TASK_HOLDER_PATH}/{job_obj.pk}.py {job_obj.pk}") | crontab -')
+        os.system(f'(crontab -l; echo "{min} {hour} * * * bash {CRON_TEMPLATE_BASH_PATH} {TASK_HOLDER_PATH}/{job_obj.pk}.py {job_obj.pk}") | crontab -')
     
     return job_obj.pk
