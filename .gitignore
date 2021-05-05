@@ -2,3 +2,7 @@ setup.py
 db.sqlite3
 migrations/
 __pycache__/
+build/
+dist/
+django_ubuntu_cron.egg-info/
+

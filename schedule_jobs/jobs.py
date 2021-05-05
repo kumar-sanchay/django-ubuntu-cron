@@ -43,19 +43,16 @@ def add_job(registered_name, task_name, year, month, day, hour, min, periodic, *
         if not job_obj.periodic:
             extra_content = f"""
             
-if __name__ == '__main__':
-    import datetime
+import datetime
 
-    if '{job_obj.scheduled_date.date()}' == datetime.date.today().strftime('%Y-%m-%d'):
-        {registered_name}(**{kwargs})
+if '{job_obj.scheduled_date.date()}' == datetime.date.today().strftime('%Y-%m-%d'):
+    {registered_name}(**{kwargs})
             """
             
         else:
             extra_content = f"""
 
-if __name__ == '__main__':
-
-    {registered_name}(**{kwargs})
+{registered_name}(**{kwargs})
             """
         
         f1.write(extra_content)
