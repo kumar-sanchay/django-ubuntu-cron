@@ -4,7 +4,9 @@ from .models import RegisterJobs, RegisterTask
 
 
 def register_task(func):
-    
+    """
+    Register the task, whenever a function reference is passed to it.
+    """
     try:
         import inspect
         from django.core.files.base import ContentFile
@@ -21,7 +23,11 @@ def register_task(func):
 
 
 def add_job(registered_name, task_name, year, month, day, hour, min, periodic, **kwargs):
-
+    """
+    Add your job at given location.
+    It will create a python file and register the job at ubuntu crontab, so that
+    the python file which is created will be run on particular time as specified. 
+    """
     import datetime
 
     TASK_HOLDER_PATH = config('TASK_HOLDER_PATH')

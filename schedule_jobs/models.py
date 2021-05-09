@@ -8,17 +8,21 @@ from django.core.exceptions import ValidationError
 TASK_TEMPLATE_PATH = config('TASK_TEMPLATE_PATH')
 
 class RegisterTask(models.Model):
-
-    name = models.CharField(max_length=25, unique=True)
+    """
+    Register file template at particular location.
+    """
+    name = models.CharField(max_length=250, unique=True)
     task_file = models.FileField(upload_to=TASK_TEMPLATE_PATH, null=True)
     created = models.DateTimeField(auto_now=True)
     active = models.BooleanField(default=True)
 
 
 class RegisterJobs(models.Model):
-
+    """
+    Register Job model. Use to store job details
+    """
     job_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    task_name = models.CharField(max_length=25)
+    task_name = models.CharField(max_length=250)
     scheduled_hour = models.PositiveIntegerField(null=True)
     scheduled_min = models.PositiveIntegerField(null=True)
     scheduled_date = models.DateField(null=True)
