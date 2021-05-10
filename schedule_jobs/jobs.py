@@ -55,7 +55,7 @@ import datetime
 if '{job_obj.scheduled_date.date()}' == datetime.date.today().strftime('%Y-%m-%d'):
     {registered_name}(**{kwargs})
 
-    os.system(f'crontab -l | grep -v '{job_obj.pk}'  | crontab -')
+    os.system(f'crontab -l | grep -v {job_obj.pk}  | crontab -')
     os.remove(os.path.join('{TASK_HOLDER_PATH}', '{job_obj.pk}.py'))
             """
             
